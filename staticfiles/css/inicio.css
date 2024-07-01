@@ -1,0 +1,43 @@
+:root {
+    --primary: #4978F0;
+    --primary-light: #E1EEF5;
+    --secondary: #1D1D1D;
+    --background: #ffffff;
+    --text: #1F2346;
+}
+
+body {
+    font-size: 1rem;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: Mulish, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Hero Section */
+.hero-section {
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    color: var(--primary);
+}
+
+.hero-section p {
+    color: var(--secondary);
+}
+
+.hero-section .btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.hero-section .btn-primary:hover {
+    background-color: #3467e9;
+    border-color: #3467e9;
+}
