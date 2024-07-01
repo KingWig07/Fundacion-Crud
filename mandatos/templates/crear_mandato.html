@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+<div class="login-wrapper">
+    <div class="register-side">
+        <div class="my-form__wrapper">
+            <div class="login-welcome-row">
+                <h1>Nuevo mandato de aporte</h1>
+            </div>
+            <form method="POST" class="my-form">
+                {% csrf_token %}
+                {% if error %}
+                <p class="text-danger">{{ error }}</p>
+                {% endif %}
+                {{ form.non_field_errors }}
+                <div class="text-field">
+                    {{ form.nombre_aportador.errors }}
+                    <label for="{{ form.nombre_aportador.id_for_label }}">Nombre del aportador:</label>
+                    {{ form.nombre_aportador }}
+                </div>
+                <div class="text-field">
+                    {{ form.rut_aportador.errors }}
+                    <label for="{{ form.rut_aportador.id_for_label }}">RUT del aportador:</label>
+                    {{ form.rut_aportador }}
+                </div>
+                <div class="text-field">
+                    {{ form.monto.errors }}
+                    <label for="{{ form.monto.id_for_label }}">Monto:</label>
+                    {{ form.monto }}
+                </div>
+                <div class="text-field">
+                    {{ form.numero_tarjeta.errors }}
+                    <label for="{{ form.numero_tarjeta.id_for_label }}">Número de tarjeta:</label>
+                    {{ form.numero_tarjeta }}
+                </div>
+                <input type="submit" class="my-form__button" value="Guardar">
+            </form>
+        </div>
+    </div>
+    <div class="info-side">
+        <img src="{% static 'img/aporteimg.png' %}" alt="Hero" class="hero">
+    </div>
+</div>
+
+{% endblock %}

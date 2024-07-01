@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}"> <!-- Asegúrate de ajustar la ruta según tu estructura de archivos -->
+
+<div class="login-wrapper">
+    <div class="register-side">
+        <div class="my-form__wrapper">
+            <div class="login-welcome-row">
+                <h1>Editar aporte</h1>
+            </div>
+            <form method="POST" class="my-form">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="text-field">
+                    <label for="{{ form.nombre_aportador.id_for_label }}">Nombre del aportador:</label>
+                    {{ form.nombre_aportador }}
+                    {% if form.nombre_aportador.errors %}
+                        <p class="text-danger">{{ form.nombre_aportador.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="text-field">
+                    <label for="{{ form.rut_aportador.id_for_label }}">RUT del aportador:</label>
+                    {{ form.rut_aportador }}
+                    {% if form.rut_aportador.errors %}
+                        <p class="text-danger">{{ form.rut_aportador.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="text-field">
+                    <label for="{{ form.monto.id_for_label }}">Monto:</label>
+                    {{ form.monto }}
+                    {% if form.monto.errors %}
+                        <p class="text-danger">{{ form.monto.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="text-field">
+                    <label for="{{ form.numero_tarjeta.id_for_label }}">Número de tarjeta:</label>
+                    {{ form.numero_tarjeta }}
+                    {% if form.numero_tarjeta.errors %}
+                        <p class="text-danger">{{ form.numero_tarjeta.errors }}</p>
+                    {% endif %}
+                </div>
+                <button type="submit" class="my-form__button">Editar</button>
+            </form>
+
+            <form method="post" action="{% url 'eliminar_mandato' mandato.id %}">
+                {% csrf_token %}
+                <button type="submit" class="my-form__button_eliminar">Eliminar</button>
+            </form>
+
+            {% if error %}
+            <p class="text-danger mt-3">{{ error }}</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="info-side">
+        <img src="{% static 'img/aporteimg.png' %}" alt="Hero" class="hero">
+    </div>
+</div>
+
+{% endblock %}

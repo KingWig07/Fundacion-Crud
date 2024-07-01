@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+<div class="login-wrapper">
+    <div class="register-side">
+        <div class="my-form__wrapper">
+            <div class="login-welcome-row">
+                <h1>Iniciar Sesion</h1>
+            </div>
+            <form method="POST" class="my-form">
+                {% csrf_token %}
+                {{ error }}
+                <input type="hidden" name="next" value="{{ next }}">
+                <div class="text-field">
+                    <label for="username">Nombre de usuario:</label>
+                    <input type="text" id="username" name="username" placeholder="Ingresar Nombre" required>
+                </div>
+                <div class="text-field">
+                    <label for="password">Contraseña:</label>
+                    <input id="password" type="password" name="password" placeholder="Ingresar Contraseña" required>
+                </div>
+                <input type="submit" class="my-form__button" value="Iniciar Sesión">
+                <div class="my-form__signup">
+                    <p style="margin-top: 15px;">No tienes cuenta?
+                        <a href="/signup" title="Regístrate" style="margin-left: 5px;">Regístrate</a>
+                    </p>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+    <div class="info-side">
+        <img src="{% static 'img/hero.png' %}" alt="Hero" class="hero">
+    </div>
+</div>
+
+{% endblock %}

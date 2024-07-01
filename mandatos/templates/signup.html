@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+<div class="login-wrapper">
+    <div class="register-side">
+        <div class="my-form__wrapper">
+            <div class="login-welcome-row">
+                <h1>Crear Cuenta</h1>
+            </div>
+            <form method="POST" class="my-form">
+                {% csrf_token %}
+                {{ error }}
+                <div class="text-field">
+                    <label for="username">Nombre de usuario:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Ingresar Nombre"
+                        required
+                    >
+                </div>
+                <div class="text-field">
+                    <label for="password1">Contraseña:</label>
+                    <input
+                        id="password1"
+                        type="password"
+                        name="password1"
+                        placeholder="Ingresar Contraseña"
+                        required
+                    >
+                </div>
+                <div class="text-field">
+                    <label for="password2">Repetir Contraseña:</label>
+                    <input
+                        id="password2"
+                        type="password"
+                        name="password2"
+                        placeholder="Repetir Contraseña"
+                        required
+                    >
+                </div>
+                <input type="submit" class="my-form__button" value="Confirmar">
+                <div class="my-form__signup">
+                    <p style="margin-top: 15px;">Ya tienes cuenta?
+                        <a href="/signin" title="Iniciar Sesión" style="margin-left: 5px;">
+                            Iniciar Sesión
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="info-side">
+        <img src="{% static 'img/hero.png' %}" alt="Hero" class="hero">
+    </div>
+</div>
+
+{% endblock %}
